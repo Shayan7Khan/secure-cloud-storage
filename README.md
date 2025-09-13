@@ -1,96 +1,140 @@
-# Secure Cloud Storage 🚀
+# 🔒 Secure Cloud Storage
+Your privacy-first cloud storage solution  
 
-[![Python](https://img.shields.io/badge/Python-3.11-blue)](https://www.python.org/)
-[![Flask](https://img.shields.io/badge/Flask-2.3.3-orange)](https://flask.palletsprojects.com/)
-[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
-
-A **client-side encrypted cloud storage** web application using **Flask**, **AWS S3**, and **CryptoJS**. Encrypt your files in the browser and securely upload them to S3. Only users with the correct key can decrypt files on download.
-
----
-
-## Features ✨
-
-- AES encryption **before upload** (client-side)
-- Secure uploads to AWS S3 with **server-side encryption**
-- List all uploaded files dynamically
-- Download and decrypt files using the **correct key**
-- Protect sensitive credentials with a `.env` file
+[![Python](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://www.python.org/)  
+[![Flask](https://img.shields.io/badge/Flask-2.0+-green.svg)](https://flask.palletsprojects.com/)  
+[![Docker](https://img.shields.io/badge/Docker-Enabled-blue.svg)](https://www.docker.com/)  
+[![AWS S3](https://img.shields.io/badge/AWS-S3-orange.svg)](https://aws.amazon.com/s3/)  
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)  
 
 ---
 
-## Tech Stack 🛠️
-
-- **Frontend:** HTML, CSS, JavaScript, [CryptoJS](https://cryptojs.gitbook.io/docs/)
-- **Backend:** Python, Flask
-- **Cloud Storage:** AWS S3
-- **Environment Management:** Python-dotenv
+## 📋 Table of Contents
+- [Overview](#-overview)
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Acknowledgments](#-acknowledgments)
 
 ---
 
-## Quick Start ⚡
+## 🌟 Overview
+We often upload files to cloud platforms without knowing how safe they are.  
+**Secure Cloud Storage** ensures files are encrypted *before leaving your browser*, so not even the server or AWS can see the raw data. Only someone with the correct key can decrypt them.
 
-1. **Clone the repo**
+---
 
-```bash
-git clone <your-repo-url>
+## ✨ Features
+- 🔐 **Client-Side Encryption**: AES encryption in the browser with CryptoJS  
+- ☁️ **AWS S3 + KMS**: Secure cloud storage with managed encryption keys  
+- 🖥️ **Flask Backend**: Lightweight server for handling requests  
+- 🐳 **Dockerized**: Easy deployment and consistent environments  
+- 📥 **File Flow**:  
+  1. User selects a file → browser encrypts with AES  
+  2. Flask backend stores it in AWS S3 (with SSE-KMS)  
+  3. User downloads and decrypts locally  
+
+---
+
+## 🛠 Tech Stack
+**Frontend**  
+- CryptoJS (AES Encryption)  
+- HTML, CSS, JavaScript  
+
+**Backend**  
+- Flask  
+- AWS S3 + SSE-KMS  
+
+**Deployment**  
+- Docker  
+
+---
+
+## 📥 Installation
+
+### Prerequisites
+- Python 3.9+  
+- AWS Account with S3 + KMS enabled  
+- Docker (optional but recommended)  
+
+### Steps
+
+# Clone the repo
+git clone https://github.com/your-username/secure-cloud-storage.git
 cd secure-cloud-storage
-Install dependencies
 
-bash
-Copy code
-python3 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+# Install dependencies
 pip install -r requirements.txt
-Configure environment variables
 
-Create a .env file in the project root:
-
-text
-Copy code
-AWS_ACCESS_KEY_ID=your_aws_access_key
-AWS_SECRET_ACCESS_KEY=your_aws_secret_key
-AWS_REGION=your_aws_region
-S3_BUCKET=your_s3_bucket_name
-FLASK_PORT=5000
-⚠️ Ensure .env is included in .gitignore to keep your credentials safe.
-
-Run the app
-
-bash
-Copy code
+# Run locally
 python app.py
-Open in browser
 
-arduino
-Copy code
-http://localhost:5000
-Usage 📝
-Upload a file
+# Run with Docker
+docker-compose up --build
 
-Select a file.
+---
 
-Enter an encryption key.
 
-Click "Upload".
+### Usage
 
-List files
+Start the app
 
-Click "Refresh File List".
+Upload a file → it is encrypted in the browser
 
-Download & decrypt
+File is stored securely in AWS S3 with server-side encryption
 
-Click "Download & Decrypt".
+Download file → enter key → browser decrypts back to original
 
-Enter the correct encryption key to decrypt.
 
-Wrong key will fail decryption. ✅ Only the correct key can restore the original file.
+---
 
-Security 🔒
-Files are never sent unencrypted to the server.
 
-AWS S3 server-side encryption (AES256) adds extra protection.
+### Contributing
 
-Sensitive data is stored in .env and excluded from Git.
+We welcome contributions!
 
-License 📄
-MIT License © 2025 Shayan Khan
+Fork the repo
+
+Create your feature branch
+
+git checkout -b feature/amazing-feature
+
+
+Commit your changes
+
+git commit -m "Add amazing feature"
+
+
+Push to the branch
+
+git push origin feature/amazing-feature
+
+Open a Pull Request
+
+
+---
+
+
+
+### License
+
+This project is licensed under the MIT License – see the LICENSE
+ file for details.
+
+ 
+ ---
+
+ 
+
+### Acknowledgments
+
+Flask community
+
+CryptoJS contributors
+
+AWS for cloud infrastructure
+
+Docker for containerization
