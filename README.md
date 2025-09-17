@@ -1,140 +1,94 @@
 # 🔒 Secure Cloud Storage
 Your privacy-first cloud storage solution  
 
-[![Python](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://www.python.org/)  
-[![Flask](https://img.shields.io/badge/Flask-2.0+-green.svg)](https://flask.palletsprojects.com/)  
-[![Docker](https://img.shields.io/badge/Docker-Enabled-blue.svg)](https://www.docker.com/)  
-[![AWS S3](https://img.shields.io/badge/AWS-S3-orange.svg)](https://aws.amazon.com/s3/)  
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)  
+A simple, secure, and modern cloud storage web app built with Python (Flask), Docker, and AWS S3. All files are encrypted before storage, ensuring your data stays private. Designed for learning and portfolio demonstration of cloud security concepts.
 
 ---
 
-## 📋 Table of Contents
-- [Overview](#-overview)
-- [Features](#-features)
-- [Tech Stack](#-tech-stack)
-- [Installation](#-installation)
-- [Usage](#-usage)
-- [Contributing](#-contributing)
-- [License](#-license)
-- [Acknowledgments](#-acknowledgments)
+## Introduction
+
+**Secure Cloud Storage** lets you safely upload, store, and download files with end-to-end encryption. The app features a clean, intuitive frontend and a robust backend, all containerized for easy local development.
 
 ---
 
-## 🌟 Overview
-We often upload files to cloud platforms without knowing how safe they are.  
-**Secure Cloud Storage** ensures files are encrypted *before leaving your browser*, so not even the server or AWS can see the raw data. Only someone with the correct key can decrypt them.
+## Features
+
+- 🔒 **Client-side encryption**: Files are encrypted before upload.
+- ☁️ **Secure file upload & download**: Only you can decrypt your files.
+- 🖥️ **Modern frontend**: Clean HTML, CSS, and JavaScript interface.
+- 🐳 **Easy setup**: Run locally with Docker and docker-compose.
+- 📚 **Educational**: Built to demonstrate cloud security best practices.
 
 ---
 
-## ✨ Features
-- 🔐 **Client-Side Encryption**: AES encryption in the browser with CryptoJS  
-- ☁️ **AWS S3 + KMS**: Secure cloud storage with managed encryption keys  
-- 🖥️ **Flask Backend**: Lightweight server for handling requests  
-- 🐳 **Dockerized**: Easy deployment and consistent environments  
-- 📥 **File Flow**:  
-  1. User selects a file → browser encrypts with AES  
-  2. Flask backend stores it in AWS S3 (with SSE-KMS)  
-  3. User downloads and decrypts locally  
+## Tech Stack
+
+- **Backend:** Python, Flask
+- **Frontend:** HTML, CSS, JavaScript
+- **Cloud Storage:** AWS S3
+- **Containerization:** Docker, docker-compose
 
 ---
 
-## 🛠 Tech Stack
-**Frontend**  
-- CryptoJS (AES Encryption)  
-- HTML, CSS, JavaScript  
+## Installation & Usage
 
-**Backend**  
-- Flask  
-- AWS S3 + SSE-KMS  
+### 1. Clone the repository
 
-**Deployment**  
-- Docker  
-
----
-
-## 📥 Installation
-
-### Prerequisites
-- Python 3.9+  
-- AWS Account with S3 + KMS enabled  
-- Docker (optional but recommended)  
-
-### Steps
-
-# Clone the repo
-git clone https://github.com/your-username/secure-cloud-storage.git
+```bash
+git clone <your-repo-url>
 cd secure-cloud-storage
+```
 
-# Install dependencies
-pip install -r requirements.txt
+### 2. Configure environment variables
 
-# Run locally
-python app.py
+Create a `.env` file in the project root with your AWS and Flask settings:
 
-# Run with Docker
+```env
+AWS_ACCESS_KEY_ID=your_aws_access_key
+AWS_SECRET_ACCESS_KEY=your_aws_secret_key
+AWS_REGION=your_aws_region
+S3_BUCKET=your_s3_bucket_name
+FLASK_PORT=5000
+```
+
+> **Note:** Never commit your `.env` file. It is already in `.gitignore`.
+
+### 3. Build and run with Docker Compose
+
+```bash
 docker-compose up --build
+```
+
+The app will be available at [http://localhost:5000](http://localhost:5000)
 
 ---
 
+## Project Structure
 
-### Usage
-
-Start the app
-
-Upload a file → it is encrypted in the browser
-
-File is stored securely in AWS S3 with server-side encryption
-
-Download file → enter key → browser decrypts back to original
-
-
----
-
-
-### Contributing
-
-We welcome contributions!
-
-Fork the repo
-
-Create your feature branch
-
-git checkout -b feature/amazing-feature
-
-
-Commit your changes
-
-git commit -m "Add amazing feature"
-
-
-Push to the branch
-
-git push origin feature/amazing-feature
-
-Open a Pull Request
-
+```
+secure-cloud-storage/
+├── app.py              # Flask backend
+├── static/             # Frontend static files (JS, CSS)
+├── templates/          # HTML templates
+├── requirements.txt    # Python dependencies
+├── Dockerfile          # Docker image definition
+├── docker-compose.yml  # Multi-container setup
+├── .env.example        # Example environment variables
+└── README.md           # Project documentation
+```
 
 ---
 
+## Future Improvements
 
+- User authentication and access control
+- File versioning and history
+- Support for larger files and resumable uploads
+- Improved error handling and notifications
+- Deployment guides for AWS/GCP/Azure
 
-### License
+---
 
-This project is licensed under the MIT License – see the LICENSE
- file for details.
+## License
 
- 
- ---
-
- 
-
-### Acknowledgments
-
-Flask community
-
-CryptoJS contributors
-
-AWS for cloud infrastructure
-
-Docker for containerization
+MIT License © 2025 Shayan Khan
